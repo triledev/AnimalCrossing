@@ -61,7 +61,7 @@ struct APIService {
                 }
                 return data
             }
-            .decode(type: T.self, decoder: APIService.decoder)
+            .decode(type: T.self, decoder: Self.decoder)
             .mapError { APIError.parseError(reason: $0.localizedDescription) }
             .eraseToAnyPublisher()
     }
