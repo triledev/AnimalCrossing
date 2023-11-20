@@ -21,4 +21,26 @@ struct APIService {
         case unknown
         case message(reason: String), parseError(reason: String), networkError(reason: String)
     }
+    
+    static let BASE_URL = URL(string: "https://acnhapi.com/v1/")!
+
+    private static let decoder = JSONDecoder()
+
+    static func fetch<T: Codable>(endpoint: Endpoint) -> AnyPublisher<T, APIError> {
+        let component = URLComponents(url: BASE_URL.appendingPathComponent(endpoint.rawValue), resolvingAgainstBaseURL: false)!
+        let request = URLRequest(url: component.url!)
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw APIError.unknown
+                }
+                if (httpResponse.statusCode == 404) {
+                    throw APIError.message(reason: "Resource not found")
+                }
+                return data
+            }
+            .decode(type: T.self, decoder: APIService.decoder)
+            .mapError { APIError.parseError(reason: $0.localizedDescription) }
+            .eraseToAnyPublisher()
+    }
 }
