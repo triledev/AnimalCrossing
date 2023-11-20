@@ -26,9 +26,13 @@ struct APIService {
 
     private static let decoder = JSONDecoder()
 
-    static func fetch<T: Codable>(endpoint: Endpoint) -> AnyPublisher<T, APIError> {
+    static func makeURL(endpoint: Endpoint) -> URL {
         let component = URLComponents(url: BASE_URL.appendingPathComponent(endpoint.rawValue), resolvingAgainstBaseURL: false)!
-        let request = URLRequest(url: component.url!)
+        return component.url!
+    }
+    
+    static func fetch<T: Codable>(endpoint: Endpoint) -> AnyPublisher<T, APIError> {
+        let request = URLRequest(url: makeURL(endpoint: endpoint))
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
                 guard let httpResponse = response as? HTTPURLResponse else {
