@@ -9,5 +9,11 @@ import Foundation
 import Combine
 
 struct APIService {
-
+    enum Endpoint: String, CaseIterable {
+        case housewares, miscellaneous
+        case wallMounted = "wall-mounted"
+        case wallpaper, floors, rugs, photos, posters, fencing, tools
+        case tops, bottoms, dresses, headwear, accessories, socks, shoes, bags
+        case umbrellas, songs, recipes, fossils, construction, nookmiles, other
+    }
 }
