@@ -12,6 +12,7 @@
 		D7C3013F2B0B4926005E9162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7C3013E2B0B4926005E9162 /* Assets.xcassets */; };
 		D7C301432B0B4926005E9162 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7C301422B0B4926005E9162 /* Preview Assets.xcassets */; };
 		D7C3014C2B0B5C88005E9162 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3014B2B0B5C88005E9162 /* APIService.swift */; };
+		D7C3014F2B0B6AC7005E9162 /* ItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3014E2B0B6AC7005E9162 /* ItemsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D7C301402B0B4926005E9162 /* AnimalCrossing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnimalCrossing.entitlements; sourceTree = "<group>"; };
 		D7C301422B0B4926005E9162 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7C3014B2B0B5C88005E9162 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		D7C3014E2B0B6AC7005E9162 /* ItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				D7C3013E2B0B4926005E9162 /* Assets.xcassets */,
 				D7C301402B0B4926005E9162 /* AnimalCrossing.entitlements */,
 				D7C301412B0B4926005E9162 /* Preview Content */,
+				D7C3014E2B0B6AC7005E9162 /* ItemsViewModel.swift */,
 			);
 			path = AnimalCrossing;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7C3013D2B0B4925005E9162 /* ContentView.swift in Sources */,
+				D7C3014F2B0B6AC7005E9162 /* ItemsViewModel.swift in Sources */,
 				D7C3014C2B0B5C88005E9162 /* APIService.swift in Sources */,
 				D7C3013B2B0B4925005E9162 /* AnimalCrossingApp.swift in Sources */,
 			);
