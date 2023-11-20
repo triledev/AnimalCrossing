@@ -54,12 +54,12 @@
 		D7C301392B0B4925005E9162 /* AnimalCrossing */ = {
 			isa = PBXGroup;
 			children = (
+				D7C3014D2B0B6A65005E9162 /* services */,
 				D7C3013A2B0B4925005E9162 /* AnimalCrossingApp.swift */,
 				D7C3013C2B0B4925005E9162 /* ContentView.swift */,
 				D7C3013E2B0B4926005E9162 /* Assets.xcassets */,
 				D7C301402B0B4926005E9162 /* AnimalCrossing.entitlements */,
 				D7C301412B0B4926005E9162 /* Preview Content */,
-				D7C3014B2B0B5C88005E9162 /* APIService.swift */,
 			);
 			path = AnimalCrossing;
 			sourceTree = "<group>";
@@ -70,6 +70,14 @@
 				D7C301422B0B4926005E9162 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D7C3014D2B0B6A65005E9162 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3014B2B0B5C88005E9162 /* APIService.swift */,
+			);
+			path = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
