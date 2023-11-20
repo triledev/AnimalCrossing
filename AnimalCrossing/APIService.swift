@@ -9,12 +9,30 @@ import Foundation
 import Combine
 
 struct APIService {
-    enum Endpoint: String, CaseIterable {
-        case housewares, miscellaneous
-        case wallMounted = "wall-mounted"
-        case wallpaper, floors, rugs, photos, posters, fencing, tools
-        case tops, bottoms, dresses, headwear, accessories, socks, shoes, bags
-        case umbrellas, songs, recipes, fossils, construction, nookmiles, other
+    enum Endpoint {
+        case villagers
+        case villagerIcon(id: Int)
+        case villagerImage(id: Int)
+        case songs
+        case songsImage(id: Int)
+        case music(id: Int)
+        
+        public func path() -> String {
+            switch self {
+            case .villagers:
+                return "villagers"
+            case let .villagerIcon(id):
+                return "icons/villagers/\(id)"
+            case let .villagerImage(id):
+                return "images/villagers/\(id)"
+            case .songs:
+                return "songs"
+            case let .songsImage(id):
+                return "images/songs/\(id)"
+            case let .music(id):
+                return "music/\(id)"
+            }
+        }
     }
     
     enum APIError: Error {
@@ -27,7 +45,7 @@ struct APIService {
     private static let decoder = JSONDecoder()
 
     static func makeURL(endpoint: Endpoint) -> URL {
-        let component = URLComponents(url: BASE_URL.appendingPathComponent(endpoint.rawValue), resolvingAgainstBaseURL: false)!
+        let component = URLComponents(url: BASE_URL.appendingPathComponent(endpoint.path()), resolvingAgainstBaseURL: false)!
         return component.url!
     }
     
