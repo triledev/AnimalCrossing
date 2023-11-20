@@ -38,6 +38,16 @@ struct APIService {
     enum APIError: Error {
         case unknown
         case message(reason: String), parseError(reason: String), networkError(reason: String)
+        
+        static func processResponse(data: Data, response: URLResponse) throws -> Data {
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw APIError.unknown
+            }
+            if (httpResponse.statusCode == 404) {
+                throw APIError.message(reason: "Resource not found")
+            }
+            return data
+        }
     }
     
     static let BASE_URL = URL(string: "https://acnhapi.com/v1/")!
@@ -53,13 +63,7 @@ struct APIService {
         let request = URLRequest(url: makeURL(endpoint: endpoint))
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    throw APIError.unknown
-                }
-                if (httpResponse.statusCode == 404) {
-                    throw APIError.message(reason: "Resource not found")
-                }
-                return data
+                return try APIError.processResponse(data: data, response: response)
             }
             .decode(type: T.self, decoder: Self.decoder)
             .mapError { APIError.parseError(reason: $0.localizedDescription) }
